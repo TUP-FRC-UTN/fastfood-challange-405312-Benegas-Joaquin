@@ -1,1 +1,57 @@
-<p>point-of-sell works!</p>
+<h3>Point of Sell</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="mt-4">
+  <!-- Input -->
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      id="name"
+      name="name"
+      class="form-control"
+      #name="ngModel"
+      [ngClass]="{
+        'is-invalid': name.invalid && (name.dirty || name.touched),
+        'is-valid': name.valid
+      }"
+      [(ngModel)]="formData.name"
+      required
+      minlength="4"
+    />
+    <!-- Validation Messages -->
+    @if(name.invalid && (name.dirty || name.touched)){
+    @if(name.getError('required')) {
+    <div class="text-danger">El nombre es obligatorio</div>
+    }@else{
+    <div class="text-danger">Debe contener como minimo 4 caracteres.</div>
+    } }
+  </div>
+  <!-- Close Input -->
+
+  <!-- Input -->
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input
+      id="description"
+      name="description"
+      class="form-control"
+      #description="ngModel"
+      [ngClass]="{
+        'is-invalid':
+          description.invalid && (description.dirty || description.touched),
+        'is-valid': description.valid
+      }"
+      [(ngModel)]="formData.description"
+      required
+      minlength="4"
+    />
+    <!-- Validation Messages -->
+    @if(description.invalid && (description.dirty || description.touched)){
+    @if(description.getError('required')) {
+    <div class="text-danger">La descripción del pedido es obligatorio</div>
+    }@else{
+    <div class="text-danger">Debe contener como minimo 4 caracteres.</div>
+    } }
+  </div>
+  <!-- Close Input -->
+
+  <button type="submit" class="btn btn-primary">Order</button>
+</form>

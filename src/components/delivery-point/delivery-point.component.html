@@ -1,1 +1,26 @@
-<p>delivery-point works!</p>
+<br />
+<hr />
+<br />
+<h3>Delivery Point</h3>
+<h5 class="mt-4">Ready Orders</h5>
+<ul class="mt-4">
+  @for(order of getReadyOrders(); track $index) {
+  <li class="d-flex mt-3 gap-4 align-items-center">
+    <button class="btn btn-primary py-1" (click)="deliverOrder(order)">Deliver</button>
+    <p class="m-0">
+      <strong>({{ order.number }})</strong> - {{ order.description }}
+    </p>
+  </li>
+  }
+</ul>
+<hr />
+<h5 class="mt-4">Delivered Orders</h5>
+<ul class="mt-4">
+  @for(order of getDeliveredOrders(); track $index) {
+  <li class="d-flex mt-3 gap-4 align-items-center">
+    <p class="m-0">
+      <strong>({{ order.number }})</strong> - {{ order.description }}
+    </p>
+  </li>
+  }
+</ul>

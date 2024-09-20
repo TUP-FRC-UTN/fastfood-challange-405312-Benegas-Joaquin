@@ -1,1 +1,29 @@
-<p>kitchen works!</p>
+<br />
+<hr />
+<br />
+<h3>Kitchen</h3>
+<h5 class="mt-4">Pending Orders</h5>
+<ul>
+  @for(order of getPendingOrders(); track $index) {
+  <li class="d-flex mt-3 gap-4 align-items-center">
+    <button class="btn btn-primary py-1" (click)="cookOrder(order)">
+      Cook
+    </button>
+    <p class="m-0">
+      <strong>({{ order.number }})</strong> - {{ order.description }}
+    </p>
+  </li>
+  }
+</ul>
+<hr />
+<h5 class="mt-4">Cooking Orders</h5>
+<ul>
+  @for(order of getCookingOrders(); track $index) {
+  <li class="d-flex mt-3 gap-4 align-items-center">
+    <button class="btn btn-primary py-1" (click)="prepareOrder(order)">Prepare</button>
+    <p class="m-0">
+      <strong>({{ order.number }})</strong> - {{ order.description }}
+    </p>
+  </li>
+  }
+</ul>
